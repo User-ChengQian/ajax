@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-3.6.0.js"></script>
+</head>
+
+<body>
+    <form action="/login" id="f1">
+        <input type="text" name="user_name" />
+        <input type="password" name="password" />
+        <button type="submit">提交</button>
+    </form>
+    <script>
+        //阻止表单默认行为:提交转跳到根目录+action属性值
+        //e.preventDefault()
+        $(function() {
+            $('#f1').submit(function(e) {
+                    alert('监听了该表单提交事件')
+                    e.preventDefault();
+                })
+                // $('#f1').on('submit', function(e) {
+                //     alert('监听到了')
+                //     e.preventDefault();
+                // })
+        })
+    </script>
+</body>
+
+</html>
