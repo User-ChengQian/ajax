@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1导入template引擎 -->
+    <script src="../template-web.js"></script>
+    <script src="../jquery-3.6.0.js"></script>
+
+</head>
+
+<body>
+    <!--1导入template引擎
+        2定义数据
+        3定义模板
+        4调用template函数
+        5渲染HTML页面
+    -->
+    <script type="text/html" id="lv">
+        <h1>{{name}}-----------{{age}}</h1>
+        {{@test}}
+        <div>
+            {{if flag==1}}flag的值是1 {{else if flag==0}}flag的值是0 {{/if}}
+        </div>
+
+        <ul>
+            {{each hobby}}
+            <li>
+                {{$value}}的索引是{{$index}}
+            </li>
+            {{/each}}
+        </ul>
+
+        <h3>
+            {{regtime | dateFormat}}
+        </h3>
+    </script>
+
+    <script>
+        //定义时间过滤器
+        template.defaults.imports.dateFormat = function(date) {
+                var y = date.getFullYear()
+                var m = date.getMonth() + 1
+                var d = date.getDate()
+                return y + '-' + m + '-' + d
+            }
+            // 2定义数据
+        var data = {
+                name: 'zs',
+                age: 20,
+                test: '<h3>@原文输出</h3>',
+                flag: 1,
+                hobby: ['吃饭', '睡觉', '敲代码'],
+                regtime: new Date()
+            }
+            //3调用template
+        var back = template('lv', data)
+        console.log(back);
+
+        //5渲染网页
+        $('body').html(back);
+    </script>
+
+</body>
+
+</html>

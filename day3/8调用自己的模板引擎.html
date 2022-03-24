@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./8模板引擎.js"></script>
+</head>
+
+<body>
+    <div id="box"></div>
+    <!-- 造一个模板 -->
+    <script type="text/html" id="mobal">
+        <div>姓名:{{name}}</div>
+        <div>年龄:{{age}}</div>
+        <div>性别:{{ sex}}</div>
+        <div>住址:{{address }}</div>
+    </script>
+    <script>
+        var data = {
+            name: 'zs',
+            age: 18,
+            sex: 'boy',
+            address: '江西省'
+        }
+        var htmlst = fun('mobal', data)
+        document.querySelector('#box').innerHTML = htmlst
+    </script>
+</body>
+
+</html>

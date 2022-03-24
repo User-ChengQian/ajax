@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var st = '我的名字叫{{name}},年龄{{age}}岁'
+        var rg = /{{([a-zA-Z]+)}}/
+            // exec是会返回一个值,必须要用一个变量接住
+        var temp = null
+        while (temp = rg.exec(st)) {
+            st = st.replace(temp[0], temp[1])
+        }
+        console.log(st);
+    </script>
+</body>
+
+</html>
