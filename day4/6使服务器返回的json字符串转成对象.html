@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // json的本质是一个字符串
+        var json = '{"a":"hello","b":"wahaha"}'
+        var obj = JSON.parse(json)
+        console.log(obj);
+        console.log(typeof obj);
+        // 
+        var obj1 = {
+            a: "hello",
+            b: "wahaha"
+        }
+        var json2 = JSON.stringify(obj1)
+        console.log(json2);
+        console.log(typeof json2);
+    </script>
+</body>
+
+</html>
