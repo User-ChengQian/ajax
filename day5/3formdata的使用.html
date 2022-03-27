@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- formdata自定义追加内容 -->
+    <script>
+        // 1创建formdata对象
+        var fd = new FormData()
+        fd.append('uname', 'zs')
+        fd.append('age', 20)
+        var xhr = new XMLHttpRequest()
+        xhr.open('POST', 'http://www.liulongbin.top:3006/api/formdata')
+        xhr.send(fd)
+        xhr.onreadystatechange = function() {
+            console.log(xhr.responseText)
+        }
+    </script>
+</body>
+
+</html>
