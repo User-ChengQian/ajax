@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 在第二个script标签中指定js地址模拟客户端的指向,
+        并且使用查询字符串的方式,告诉服务器(外联js)该函数名称 -->
+
+    <script>
+        function fun(a, b) {
+            console.log(a + b);
+        }
+    </script>
+    <script src="./6.js?callback=fun"></script>
+</body>
+
+</html>

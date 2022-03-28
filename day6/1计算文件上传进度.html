@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="../bootstrap.css">
+</head>
+
+<body>
+    <input type="file" id="fil">
+    <button id="btn">上传文件</button>
+    <div id="complete" class="progress" style="width: 500px; margin: 15px 10px;">
+        <div id="progress" class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%">0%</div>
+    </div>
+    <br>
+    <img src="" alt="" id="img">
+    <script>
+        $(function() {
+            $('#btn').on('click', function() {
+                var f = $('#fil')[0].files
+                    //files属性为DOM属性
+                if (f.length <= 0) {
+                    return alert('请上传文件')
+                }
+                console.log(f);
+                var fd = new FormData()
+                fd.append('pic', f[0])
+                var xhr = new XMLHttpRequest()
+                    // 监听文件上传的进度
+                xhr.upload.onprogress = function(e) {
+                    if (e.lengthComputable) {
+                        var complete = Math.ceil((e.loaded / e.total) * 100)
+                        console.log(complete);
+                        $('#progress').html(complete + '%').attr('style', 'width:' + complete + '%')
+                    }
+                }
+                xhr.open('POST', 'http://www.liulongbin.top:3006/api/upload/avatar')
+                xhr.send(fd)
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var result = JSON.parse(xhr.responseText)
+                        $('#img')[0].src = 'http://www.liulongbin.top:3006' + result.url
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

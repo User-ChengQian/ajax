@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- JSONP跨域原理是2个不同JS文件可以相互调用其中的函数 -->
+    <script>
+        function fun(min, max) {
+            var x = Math.ceil(Math.random() * (max - min + 1) + min)
+            console.log(x);
+        }
+    </script>
+
+    <script>
+        fun(20, 30)
+    </script>
+</body>
+
+</html>
